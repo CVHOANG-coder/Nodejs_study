@@ -1,0 +1,27 @@
+extends ../layouts/common
+
+block content
+    h1 User list
+    .d-flex.align-items-center
+        a.btn.btn-primary(href="/users/create") New
+        form.ml-auto(action = '/users/search', method ='GET', class="d-flex")
+            input(type="text", name="q", class= "form-control mr-2")
+            Button(class= "btn btn-primary") Search
+    table.table 
+        tr 
+            th Name
+            th Phone
+            th Actions
+        
+        each user in users
+            tr
+                td 
+                    img(src=user.avatar, width = "64")
+                td
+                    a(href="/users/" + user.id)= user.name
+                td= user.phone
+                td
+                    form(method="POST", action="/users/delete")
+                        Button.btn.btn-danger Delete
+                        input(type="hidden", name="delId", value=user.id)
+                

@@ -1,0 +1,82 @@
+buổi 1
+pug pug giúp code html gọn hơn
+nodemon để quản lý khi chạy chương trình
+req.body get từ form về
+routing vd user/:id ==> id= req.params.id
+buổi 2
+1. express route
+tạo file routes chứa các routes
+sau đó sửa app==> route và đường dẫn từ file index đầu sang file routes
+sau đó tạo file db dùng chung cho file index và route(moudel db)
+sau đó dùng app.use
+2. controller
+tách từng function của router.get hoặc .post ra thành các đối tượng đc modul export ở
+file controller trong thư mục controller riêng
+
+3. teamplate layout
+định nghĩa block vào file khác, file dùng thì chỉ cần extend file kia và gọi block vào vị trí cần dùng
+
+4.Static files
+app.use(express.static('public'))
+
+buổi 3
+1. middleware
+có liên quan đến tham số next và thứ tự chạy function
+2. cookie
+cookie parser
+
+3.auth(login)
+có thể check cookie xem đăng nhập chưa bằng middleware
+middleware cho ra 1 module để check rồi cho vào router
+vd router.get('/', authMiddlewares.requireAuth, controller.index);
+để protect trang /users
+
+còn nếu muốn bảo vệ tất cả các routes của /users thì có thể làm như sau:
+app.use('/users', authMiddlewares.requireAuth, userRoutes);
+
+
+buổi4
+1 signed cookie
+biến local chỉ tồn tại trong 1 vòng đời của req res trong cùng 1 req đó thôi mà ko ảnh hưởng đến các req khác, h ng dùng khác, hoặc phiên khác
+    res.locals.user = user; thực hiện để hiện tên ng dùng tại góc bên trái
+đặt trong middleware của auth
+
+req.signedCookies
+Cookie: user=tobi.CP7AWaXDfAKIRfH49dQzKJx7sKzzSoPq7/AcBBRVwlI3
+
+2 .envirnment variables
+
+3.debug nodejs
+thêm --inspect vào như sau: "start": "nodemon --inspect index.js", tai package.json
+
+4. pagination
+
+5. file upload
+cài thêm multer
+
+6.session
+là một ứng dụng của cookie
+vd khi trong phiên làm việc và thêm vào giỏ hàng
+thì có thông báo lên cart
+sử dụng sessionId
+
+buổi 5
+1. CSRF Attack
+thêm form transfer chuyển tiền
+
+
+
+
+
+
+npm init
+npm install express --save
+npm install pug --save 
+npm install body-parser --save
+npm install --save-dev nodemon
+npm install nanoid --save 
+npm install md5 --save
+npm install dotenv --save
+npm install --save multer
+
+
